@@ -43,7 +43,7 @@ export default class EditorialesController {
 
     async getLibrosEditorial({ params, response }: HttpContext) {
         const id = params.id
-        const result = await client.query('SELECT e.nombre, l.titulo FROM editoriales e JOIN libros l ON l.editorial_id = e.id_editorial WHERE l.editorial_id = $1', [id])
+        const result = await client.query('SELECT e.id_editorial, e.nombre, l.titulo FROM editoriales e JOIN libros l ON l.editorial_id = e.id_editorial WHERE l.editorial_id = $1', [id])
         return response.status(200).json({ libros: result.rows })
     }
 
