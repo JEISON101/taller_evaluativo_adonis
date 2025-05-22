@@ -19,7 +19,7 @@ export default class LibrosController {
     async getLibroId({params, response}:HttpContext){
         const id = params.id;
         const resuts = await client.query('SELECT * FROM libros WHERE id_libro = $1', [id])
-        return response.status(200).json({mensaje: 'BUSQUEDA EXITOSA', editorial: resuts.rows})
+        return response.status(200).json({mensaje: 'BUSQUEDA EXITOSA', libro: resuts.rows})
     }
 
     async postLibro({ request, response }: HttpContext) {
